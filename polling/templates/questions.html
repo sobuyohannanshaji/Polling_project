@@ -1,0 +1,33 @@
+{% extends 'userhome.html' %}
+{% block content %}
+
+
+<form method="post">
+    {% csrf_token %}
+    {% if user.id %}
+    <h3 style="margin-left:50%"><u>Add Question</u></h3>
+    <input class="form-control" type="text" name="nm" placeholder="Add questions?" required autocomplete="off" >
+    <input class = 'btn btn-primary' type="submit" value="submit" style="margin-left:50%">
+
+
+    {% if question %}
+
+    <table class="table">
+        {% for i in question %}
+        <tr>
+            <td>
+                   <a href="{% url 'option' i.id %}" class="form-control text-decoration-none text-center" style="margin-top:2%;">{{ i.question }}</a>
+
+            </td>
+            <td>
+                    <button class="btn btn-danger" ><a href="{% url 'delquestion' i.id%}" style="color:white;text-decoration:none;">Delete</a></button>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% endif %}
+    {% endif %}
+</form>
+{% endblock %}

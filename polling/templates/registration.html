@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<form method="post">
+  {% csrf_token %}
+    <h3 style="margin-left:50%;"><strong>Registration Form</strong></h3>
+   <input class="form-control" type="text" name="name" id="name" placeholder="Enter Name"  pattern="[A-Za-z ]{4,30}" title="Enter 4 to 30 character" required autocomplete="off"><br>
+   <input class="form-control" type="email" name="email" id="email" placeholder="Enter E-mail" pattern="[a-z0-9]{0,9}[@gmail]{6}[.com]{4}$" title="Eg:user@gamil.com" required autocomplete="off"><br>
+   <input class="form-control" type="number" name="ph" id="ph" placeholder="Enter Phone" pattern="[0-9]{10}" title="Enter 10 digits" required autocomplete="off"><br>
+      <input class="form-control" type="text" name="uname" id="uname" placeholder="Enter Username" pattern="[A-Za-z@.]{4,20}" title="Enter 4 to 20 character" required autocomplete="off"><br>
+      <input class="form-control" type="password" name="password" id="password" placeholder="Enter Password" pattern="[A-Za-z0-9@.#!$%&]{4,20}" title="Enter minimum 8 characters including symbols" required autocomplete="off"><br>
+     <input class="form-control" type="password" name="password1" id="password1" placeholder="Re-enter Password" pattern="[A-Za-z0-9@.#!$%&]{4,20}" title="Enter minimum 8 characters including symbols" required autocomplete="off"><br>
+    <input class="form-control btn btn-primary" type="submit" value="Save">
+</form>
+{% endblock %}

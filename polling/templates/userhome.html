@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polls App</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel = stylesheet href = "{% static 'css/style.css' %}">
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+             {% if user %}
+          <a class="navbar-brand" href="{% url 'userhome' user.id %}"><h2>Polls Application</h2></a>
+<div class="collapse navbar-collapse justify-content-end">
+    <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="{% url 'viewprofile' user.id %}" style="color:white;">View profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'questions' user.id %}"  style="color:white;">Create Question</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"  style="color:white;">Logout</a></li>
+    </ul>
+
+            {% endif %}
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        </div>
+      </nav>
+</body>
+<div class = container>
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+
+    {% for q in question %}
+    <br><a href="{% url 'options' q.id %}" class="list-group-item list-group-item-action" >{{ q.question }}</a><br>
+    {% endfor %}
+
+
+
+
+</form>
+    {% endblock %}
+</div>
+
+</html>

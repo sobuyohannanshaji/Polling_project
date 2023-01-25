@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<form method="post">
+    {% csrf_token %}
+    <h3 style="margin-left:50%;"><strong>Login Page</strong></h3>
+    <input class="form-control" type="text" name="nm" placeholder="Enter Your Username" autocomplete="off" required><br>
+    <input class="form-control" type="password" name="pass" placeholder="Password" autocomplete="off" required><br>
+    <input class="form-control btn btn-primary" type="submit" value="Login"><br>
+    <p>Don't Have Account <a href="{% url 'register' %}">Register</a> </p>
+    {% for e in error %}
+    {{ e }}
+    {% endfor %}
+</form>
+{% endblock %}

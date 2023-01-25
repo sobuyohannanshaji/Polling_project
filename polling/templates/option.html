@@ -1,0 +1,23 @@
+{% extends 'userhome.html' %}
+{% block content %}
+
+
+<form method="post">
+    {% csrf_token %}
+    <h3 style="margin-left:20%;">{{question}}</h3>
+
+
+    <input class="form-control" type="text" name="o1" placeholder="option?" required autocomplete="off">
+    <input class="btn btn-primary" type="submit" value="Save"><br><br>
+     {% if option %}
+    {% for q in option %}
+    <ul>
+        <li class="h3">{{ q.op1 }}&nbsp;&nbsp;<button class="btn btn-danger" ><a href="{% url 'deloption' q.id%}" style="color:white;text-decoration:none;">Delete</a></button></li>
+    </ul>
+
+
+     {% endfor %}
+    {% endif %}
+</form>
+
+{% endblock %}

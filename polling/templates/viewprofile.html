@@ -1,0 +1,16 @@
+{% extends 'userhome.html' %}
+{% block content %}
+
+
+<form method="post">
+    {% csrf_token %}
+   <h3 style="margin-left:50%;"><u>Profile</u></h3>
+    {% if user.id %}
+    {% for i in profile %}
+    <p class="h3 form-control">{{ i.name }}<br></p>
+    <p class="h3 form-control">{{ i.email }}<br></p>
+    <p class="h3 form-control">{{ i.phone }}<br></p>
+    {% endfor %}
+    {% endif %}
+</form>
+{% endblock %}
